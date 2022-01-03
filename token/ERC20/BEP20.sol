@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-import "./BEPContext.sol";
+import "../../utils/BEPContext.sol";
 import "./IBEP20.sol";
-import "./BEPPausable.sol";
-import "./SafeMath.sol";
+import "./extensions/BEPPausable.sol";
+import "../../utils/math/SafeMath.sol";
 /**
  * @dev Implementation of the {IBEP20} interface.
  *

@@ -2,7 +2,7 @@
 //.
 pragma solidity ^0.8.0;
 import "./BEP20Detailed.sol";
-import "./BEP20.sol";
+import "./token/ERC20/BEP20.sol";
 
 
 contract ETHEToken is BEP20Detailed, BEP20 {
