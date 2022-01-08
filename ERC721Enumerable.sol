@@ -171,12 +171,9 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
             return new uint256[](0);
         } else {
             uint256[] memory result = new uint256[](tokenCount);
-            uint256 totalCats = totalSupply();
-            
-            for (uint256 i = 0; i < totalCats; i++) {
+            for (uint256 i = 0; i < tokenCount; i++) {
                     result[i] = all[i];
             }
-
             return result;
         }
     }
