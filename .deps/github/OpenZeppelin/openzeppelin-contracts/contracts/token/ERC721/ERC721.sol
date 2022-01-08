@@ -3,21 +3,20 @@
 
 pragma solidity ^0.8.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721Receiver.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/extensions/IERC721Metadata.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Address.sol";
-//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Context.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Strings.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/ERC165.sol";
-import "./BEPContext.sol";
-import "./BEPPausable.sol";
+import "./IERC721.sol";
+import "./IERC721Receiver.sol";
+import "./extensions/IERC721Metadata.sol";
+import "../../utils/Address.sol";
+import "../../utils/Context.sol";
+import "../../utils/Strings.sol";
+import "../../utils/introspection/ERC165.sol";
+
 /**
  * @dev Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including
  * the Metadata extension, but not including the Enumerable extension, which is available separately as
  * {ERC721Enumerable}.
  */
-contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
+contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     using Address for address;
     using Strings for uint256;
 
@@ -110,7 +109,7 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
     /**
      * @dev See {IERC721-approve}.
      */
-    function approve(address to, uint256 tokenId) public whenNotPaused virtual override {
+    function approve(address to, uint256 tokenId) public virtual override {
         address owner = ERC721.ownerOf(tokenId);
         require(to != owner, "ERC721: approval to current owner");
 
@@ -125,7 +124,7 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
     /**
      * @dev See {IERC721-getApproved}.
      */
-    function getApproved(uint256 tokenId) public whenNotPaused view virtual override returns (address) {
+    function getApproved(uint256 tokenId) public view virtual override returns (address) {
         require(_exists(tokenId), "ERC721: approved query for nonexistent token");
 
         return _tokenApprovals[tokenId];
@@ -134,14 +133,14 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
     /**
      * @dev See {IERC721-setApprovalForAll}.
      */
-    function setApprovalForAll(address operator, bool approved) public whenNotPaused virtual override {
+    function setApprovalForAll(address operator, bool approved) public virtual override {
         _setApprovalForAll(_msgSender(), operator, approved);
     }
 
     /**
      * @dev See {IERC721-isApprovedForAll}.
      */
-    function isApprovedForAll(address owner, address operator) public whenNotPaused view virtual override returns (bool) {
+    function isApprovedForAll(address owner, address operator) public view virtual override returns (bool) {
         return _operatorApprovals[owner][operator];
     }
 
@@ -152,7 +151,7 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
         address from,
         address to,
         uint256 tokenId
-    ) public whenNotPaused virtual override {
+    ) public virtual override {
         //solhint-disable-next-line max-line-length
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
 
@@ -166,7 +165,7 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
         address from,
         address to,
         uint256 tokenId
-    ) public whenNotPaused virtual override {
+    ) public virtual override {
         safeTransferFrom(from, to, tokenId, "");
     }
 
@@ -178,7 +177,7 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
         address to,
         uint256 tokenId,
         bytes memory _data
-    ) public whenNotPaused virtual override {
+    ) public virtual override {
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
         _safeTransfer(from, to, tokenId, _data);
     }
@@ -254,7 +253,7 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
      * @dev Same as {xref-ERC721-_safeMint-address-uint256-}[`_safeMint`], with an additional `data` parameter which is
      * forwarded in {IERC721Receiver-onERC721Received} to contract recipients.
      */
-    function _safeMint (
+    function _safeMint(
         address to,
         uint256 tokenId,
         bytes memory _data
@@ -445,6 +444,4 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
         address to,
         uint256 tokenId
     ) internal virtual {}
-
 }
-

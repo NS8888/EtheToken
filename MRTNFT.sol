@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 //.
 pragma solidity ^0.8.0;
-import "./ERC721.sol";
-contract MRTNFT is ERC721 {
+import "./ERC721Enumerable.sol";
+contract MRTNFT is ERC721Enumerable {
     constructor() ERC721("Moon Roket Ticket", "MRT") {
         
     }
@@ -14,5 +14,8 @@ contract MRTNFT is ERC721 {
     }
     function _baseURI() override internal view virtual returns (string memory) {
         return "https://etheking.io/api/nft/rocketticket/";
+    }
+    function tokensOfOwner(address owner) external view returns (uint256[] memory) {
+        return _tokensOfOwner(owner);
     }
 }
