@@ -722,11 +722,11 @@
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/extensions/IERC721Enumerable.sol": {
-			"keccak256": "0x483f88fbbb1d6d75000fbe8ce14279b5e6121cd5a29ff5f1b91fed407735a6c3",
+			"keccak256": "0x5383256ffe07a04b5bead96b00e08f51ee689333f1d2575c62746a0288e1fd9b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://51cbe83f9ccd8619d58ca5458ff49c470c656a45856b0e7435eebf5f5d431bf1",
-				"dweb:/ipfs/QmZwR7nwu4hzVJW2m3JTPyjUopoxZUxjYLSgcSK5D4F7E2"
+				"bzz-raw://2193c6f3d9ea21225fdd80e4783bfda130429e18d34c093f29e3d5d23e57991c",
+				"dweb:/ipfs/QmT6F82MjcraYGQTAk3LGAF3q63zmDf9uHFBzNr29JoRqW"
 			]
 		},
 		"https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/extensions/IERC721Metadata.sol": {
