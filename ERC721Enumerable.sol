@@ -4,7 +4,7 @@
 pragma solidity ^0.8.0;
 
 import "./ERC721.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/extensions/IERC721Enumerable.sol";
+import "./IERC721Enumerable.sol";
 
 /**
  * @dev This implements an optional extension of {ERC721} defined in the EIP that adds

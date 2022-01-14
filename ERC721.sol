@@ -3,13 +3,12 @@
 
 pragma solidity ^0.8.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/IERC721Receiver.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/extensions/IERC721Metadata.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Address.sol";
-//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Context.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Strings.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/ERC165.sol";
+import "./IERC721.sol";
+import "./IERC721Receiver.sol";
+import "./IERC721Metadata.sol";
+import "./Address.sol";
+import "./Strings.sol";
+import "./ERC165.sol";
 import "./BEPContext.sol";
 import "./BEPPausable.sol";
 /**
@@ -86,6 +85,21 @@ contract ERC721 is BEPContext, ERC165, IERC721, IERC721Metadata, BEPPausable {
      */
     function symbol() public view virtual override returns (string memory) {
         return _symbol;
+    }
+     /**
+    * @dev Returns the number of decimals used to get its user representation.
+    * For example, if `decimals` equals `2`, a balance of `505` tokens should
+    * be displayed to a user as `5,05` (`505 / 10 ** 2`).
+    *
+    * Tokens usually opt for a value of 18, imitating the relationship between
+    * Ether and Wei.
+    *
+    * NOTE: This information is only used for _display_ purposes: it in
+    * no way affects any of the arithmetic of the contract, including
+    * {IBEP20-balanceOf} and {IBEP20-transfer}.
+    */
+    function decimals() public view virtual returns (uint8) {
+        return uint8(0);
     }
 
     /**

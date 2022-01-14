@@ -2,10 +2,10 @@
 // OpenZeppelin Contracts v4.4.1 (finance/VestingWallet.sol)
 pragma solidity ^0.8.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/utils/SafeERC20.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Address.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/Context.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/Math.sol";
+import "./SafeERC20.sol";
+import "./Address.sol";
+import "./BEPContext.sol";
+import "./Math.sol";
 
 /**
  * @title VestingWallet
@@ -17,7 +17,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
  * Consequently, if the vesting has already started, any amount of tokens sent to this contract will (at least partly)
  * be immediately releasable.
  */
-contract VestingWallet is Context {
+contract VestingWallet is BEPContext {
     event EtherReleased(uint256 amount);
     event ERC20Released(address indexed token, uint256 amount);
 

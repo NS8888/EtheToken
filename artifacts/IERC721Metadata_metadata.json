@@ -6,22 +6,6 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [
-					{
-						"internalType": "string",
-						"name": "name_",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "symbol_",
-						"type": "string"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -77,31 +61,6 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "previousOwner",
-						"type": "address"
-					},
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "OwnershipTransferred",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [],
-				"name": "Pause",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
 						"name": "from",
 						"type": "address"
 					},
@@ -119,12 +78,6 @@
 					}
 				],
 				"name": "Transfer",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [],
-				"name": "Unpause",
 				"type": "event"
 			},
 			{
@@ -157,21 +110,8 @@
 				"outputs": [
 					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "balance",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "decimals",
-				"outputs": [
-					{
-						"internalType": "uint8",
-						"name": "",
-						"type": "uint8"
 					}
 				],
 				"stateMutability": "view",
@@ -189,7 +129,7 @@
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "operator",
 						"type": "address"
 					}
 				],
@@ -222,38 +162,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "isOwner",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "name",
 				"outputs": [
 					{
 						"internalType": "string",
 						"name": "",
 						"type": "string"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "owner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -271,44 +185,11 @@
 				"outputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "owner",
 						"type": "address"
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "pause",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "paused",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "renounceOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -353,7 +234,7 @@
 					},
 					{
 						"internalType": "bytes",
-						"name": "_data",
+						"name": "data",
 						"type": "bytes"
 					}
 				],
@@ -371,7 +252,7 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "approved",
+						"name": "_approved",
 						"type": "bool"
 					}
 				],
@@ -453,102 +334,53 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "newOwner",
-						"type": "address"
-					}
-				],
-				"name": "transferOwnership",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "unpause",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
 			}
 		],
 		"devdoc": {
-			"details": "Implementation of https://eips.ethereum.org/EIPS/eip-721[ERC721] Non-Fungible Token Standard, including the Metadata extension, but not including the Enumerable extension, which is available separately as {ERC721Enumerable}.",
+			"details": "See https://eips.ethereum.org/EIPS/eip-721",
 			"kind": "dev",
 			"methods": {
 				"approve(address,uint256)": {
-					"details": "See {IERC721-approve}."
+					"details": "Gives permission to `to` to transfer `tokenId` token to another account. The approval is cleared when the token is transferred. Only a single account can be approved at a time, so approving the zero address clears previous approvals. Requirements: - The caller must own the token or be an approved operator. - `tokenId` must exist. Emits an {Approval} event."
 				},
 				"balanceOf(address)": {
-					"details": "See {IERC721-balanceOf}."
-				},
-				"constructor": {
-					"details": "Initializes the contract by setting a `name` and a `symbol` to the token collection."
-				},
-				"decimals()": {
-					"details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5,05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IBEP20-balanceOf} and {IBEP20-transfer}."
+					"details": "Returns the number of tokens in ``owner``'s account."
 				},
 				"getApproved(uint256)": {
-					"details": "See {IERC721-getApproved}."
+					"details": "Returns the account approved for `tokenId` token. Requirements: - `tokenId` must exist."
 				},
 				"isApprovedForAll(address,address)": {
-					"details": "See {IERC721-isApprovedForAll}."
-				},
-				"isOwner()": {
-					"details": "Returns true if the caller is the current owner."
+					"details": "Returns if the `operator` is allowed to manage all of the assets of `owner`. See {setApprovalForAll}"
 				},
 				"name()": {
-					"details": "See {IERC721Metadata-name}."
-				},
-				"owner()": {
-					"details": "Returns the address of the current owner."
+					"details": "Returns the token collection name."
 				},
 				"ownerOf(uint256)": {
-					"details": "See {IERC721-ownerOf}."
-				},
-				"pause()": {
-					"details": "called by the owner to pause, triggers stopped state"
-				},
-				"renounceOwnership()": {
-					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+					"details": "Returns the owner of the `tokenId` token. Requirements: - `tokenId` must exist."
 				},
 				"safeTransferFrom(address,address,uint256)": {
-					"details": "See {IERC721-safeTransferFrom}."
+					"details": "Safely transfers `tokenId` token from `from` to `to`, checking first that contract recipients are aware of the ERC721 protocol to prevent tokens from being forever locked. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be have been allowed to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
 				},
 				"safeTransferFrom(address,address,uint256,bytes)": {
-					"details": "See {IERC721-safeTransferFrom}."
+					"details": "Safely transfers `tokenId` token from `from` to `to`. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must exist and be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. - If `to` refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer. Emits a {Transfer} event."
 				},
 				"setApprovalForAll(address,bool)": {
-					"details": "See {IERC721-setApprovalForAll}."
+					"details": "Approve or remove `operator` as an operator for the caller. Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller. Requirements: - The `operator` cannot be the caller. Emits an {ApprovalForAll} event."
 				},
 				"supportsInterface(bytes4)": {
-					"details": "See {IERC165-supportsInterface}."
+					"details": "Returns true if this contract implements the interface defined by `interfaceId`. See the corresponding https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section] to learn more about how these ids are created. This function call must use less than 30 000 gas."
 				},
 				"symbol()": {
-					"details": "See {IERC721Metadata-symbol}."
+					"details": "Returns the token collection symbol."
 				},
 				"tokenURI(uint256)": {
-					"details": "See {IERC721Metadata-tokenURI}."
+					"details": "Returns the Uniform Resource Identifier (URI) for `tokenId` token."
 				},
 				"transferFrom(address,address,uint256)": {
-					"details": "See {IERC721-transferFrom}."
-				},
-				"transferOwnership(address)": {
-					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
-				},
-				"unpause()": {
-					"details": "called by the owner to unpause, returns to normal state"
+					"details": "Transfers `tokenId` token from `from` to `to`. WARNING: Usage of this method is discouraged, use {safeTransferFrom} whenever possible. Requirements: - `from` cannot be the zero address. - `to` cannot be the zero address. - `tokenId` token must be owned by `from`. - If the caller is not `from`, it must be approved to move this token by either {approve} or {setApprovalForAll}. Emits a {Transfer} event."
 				}
 			},
+			"title": "ERC-721 Non-Fungible Token Standard, optional metadata extension",
 			"version": 1
 		},
 		"userdoc": {
@@ -559,7 +391,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"ERC721.sol": "ERC721"
+			"IERC721Metadata.sol": "IERC721Metadata"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -573,54 +405,6 @@
 		"remappings": []
 	},
 	"sources": {
-		"Address.sol": {
-			"keccak256": "0xc3025aaa95aa8f9e80b9a7f76c40a4b94b60b065bd3bbe3cb0a476e95846d658",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://89d75bac0237f5c371a2519ce92fbacf3c4ecdcff4cc9f10a5f3673d82876f56",
-				"dweb:/ipfs/QmeTypoZNTYKmSdmKiFvJxwot72RE5Bddi5ssX3heW2xdP"
-			]
-		},
-		"BEPContext.sol": {
-			"keccak256": "0xdd500e39fddc002cdb153b0a608db9e093c2f60cf8f35a365fc15f61680c4bda",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://db3dc4b19c372752debddb8d44b84b0581e301da1f7ac9a0d44246a677263022",
-				"dweb:/ipfs/QmZ5fvqabMXU6jbiLeN5GNJkzkhnzYuLv9gkLpHQnDcStA"
-			]
-		},
-		"BEPOwnable.sol": {
-			"keccak256": "0xa7258a80897e1dd0c91411d286e6983176acef5d344a8c87ca1a27bdb91458fd",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://d9930713acf1790e65028f93f132bb112d11ac6e8ffb5e4432c479cf11113e85",
-				"dweb:/ipfs/QmdERPVBMH3Bkc5ZJ1eiA5dT9UhjdfhBpJcQyjYGq9WUmS"
-			]
-		},
-		"BEPPausable.sol": {
-			"keccak256": "0xdc7bd108ed2ea05955015cff10f6113eb1db5259f7405f36476821173a2d7bc5",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://70a491c43afcfa989c9425444a4a62c8e29f09578e8374423f8873453adc4f77",
-				"dweb:/ipfs/QmS3p82uSwtSazrM7qSqWv7pqWt1t9mLyyuX2G97JF8uxa"
-			]
-		},
-		"ERC165.sol": {
-			"keccak256": "0x007e2f7272ae11ad26d41ab057568d7db5d17cd0a38b4bc68a38aba88abd69e4",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://0b687dd9507abe6777e3ad535dc8add5ad634b1ea229a9b56ce3d92410adedab",
-				"dweb:/ipfs/QmfZWeGWnnD4nGZn8L853PiKdqMHcSKCTLj5dfSvmB3ZzR"
-			]
-		},
-		"ERC721.sol": {
-			"keccak256": "0x544fc9cae1b199d30ff7b353cc439384fa3d08604b35302c340b42fa4ccf1957",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://b300f194432c4c57ec21bb257b390269e0ab760cc1d0d6f4379e398060e018a3",
-				"dweb:/ipfs/QmceaRmffmJY8fsgaAkncZ9NNUK4KmEx6suBCKaGehLDGg"
-			]
-		},
 		"IERC165.sol": {
 			"keccak256": "0xa36a31b4bb17fad88d023474893b3b895fa421650543b1ce5aefc78efbd43244",
 			"license": "MIT",
@@ -643,22 +427,6 @@
 			"urls": [
 				"bzz-raw://a3d84ff3c7e4f7739dd5d3528c571310c76c11da07c20e1aa70bfb1d82dd5d29",
 				"dweb:/ipfs/QmV5sGjniV5qVa5jEwhQAD82i4j2tJ8pzHPrQvUbs6jhNb"
-			]
-		},
-		"IERC721Receiver.sol": {
-			"keccak256": "0xc66c39db95b4f7b0c01f9ae6585a9bbc6d8415d7be14db9dfd871b8bd671f7e4",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://e6cd8d0fb37823a820754b93cb6a7c32cd13fd6f98190515bb7d4a086ac88833",
-				"dweb:/ipfs/Qmc14KrMucFrkykM4KJAfGK4BkCFJyZvkzDzoHhPucEgqC"
-			]
-		},
-		"Strings.sol": {
-			"keccak256": "0x36af8f8be523e084c3ed6932ee5c0a7f038f663d8f1c185f77a810a43e3ae1cf",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://96fa73b388e04aafcebe0d82f8e5d3a072eddc91e09ee82be6dbeaad05370f6c",
-				"dweb:/ipfs/QmfEn7ttDhAHaApZHMb3XT7tA1M2SU5Rvqk3iKER7U2Pxf"
 			]
 		}
 	},

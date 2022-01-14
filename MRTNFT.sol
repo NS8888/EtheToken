@@ -2,8 +2,9 @@
 //.
 pragma solidity ^0.8.0;
 import "./ERC721Enumerable.sol";
+
 contract MRTNFT is ERC721Enumerable {
-    constructor() ERC721("Moon Roket Ticket", "MRT") {
+    constructor() ERC721("Moon Rocket Ticket", "MoonTicket") {
         
     }
     function burn(uint256 tokenId) external {

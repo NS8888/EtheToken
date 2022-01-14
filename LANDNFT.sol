@@ -2,8 +2,9 @@
 //.
 pragma solidity ^0.8.0;
 import "./ERC721Enumerable.sol";
+
 contract LANDNFT is ERC721Enumerable {
-    constructor() ERC721("Moon Land ETHE", "MLE") {
+    constructor() ERC721("Moon Land ETHE", "MoonLand") {
         
     }
     function burn(uint256 tokenId) external {
